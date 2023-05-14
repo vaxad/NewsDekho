@@ -30,7 +30,6 @@ const News=(props)=>{
             method:'GET',
             headers:{
                 'Content-Type': 'application/json',
-                //'x-api-key':'1eFQwqGzviaD1tkL4uoPCHtmDrp5oWEaN39baTLiDu8'
                 'x-api-key':'vQ6vl1L8Sj66v2eFrcQglAlDENE5NFRWjssBpO0lhRs'
             }
         });
@@ -49,10 +48,11 @@ const News=(props)=>{
         setLoading(true);
         props.setProgress(30);
         let data= await fetch(url,{
-            method:'get',
-            headers:new Headers({
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/json',
                 'x-api-key':'vQ6vl1L8Sj66v2eFrcQglAlDENE5NFRWjssBpO0lhRs'
-            })
+            }
         });;
         props.setProgress(70);
         let parseData= await data.json();
