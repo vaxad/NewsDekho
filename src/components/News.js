@@ -24,9 +24,16 @@ const News=(props)=>{
     }
 
     const fetchMoreData=async ()=>{
-        let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+        let url=`https://api.newscatcherapi.com/v2/search?q=${props.category}&countries=${props.country}&page=${page}&page_size=${props.pageSize}`;
         setPage(page+1);
-        let data= await fetch(url);
+        let data= await fetch(url,{
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'x-api-key':'1eFQwqGzviaD1tkL4uoPCHtmDrp5oWEaN39baTLiDu8'
+                //'x-api-key':'vQ6vl1L8Sj66v2eFrcQglAlDENE5NFRWjssBpO0lhRs'
+            }
+        });
         let parseData= await data.json();
         
         setArticles(articles.concat(parseData.articles));
@@ -37,10 +44,16 @@ const News=(props)=>{
 
     const updateNews=async()=>{
         props.setProgress(0);
-        let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+        //let url=`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+        let url=`https://api.newscatcherapi.com/v2/search?q=${props.category}&countries=${props.country}&page=${page}&page_size=${props.pageSize}`;
         setLoading(true);
         props.setProgress(30);
-        let data= await fetch(url);
+        let data= await fetch(url,{
+            method:'get',
+            headers:new Headers({
+                'x-api-key':'vQ6vl1L8Sj66v2eFrcQglAlDENE5NFRWjssBpO0lhRs'
+            })
+        });;
         props.setProgress(70);
         let parseData= await data.json();
         setArticles(parseData.articles);
@@ -70,9 +83,9 @@ const News=(props)=>{
         <div className="row">
             
         {articles.map((element)=>{
-                return element.urlToImage?<div className="col-md-4" key={element.url}>
-                <NewsItem title={element.title?element.title.slice(0,40):"Click on 'Read more' for more information"} description={element.description?element.description.slice(0,80):"Click on 'Read more' for more information"} img={element.urlToImage} newsUrl={element.url}
-                author={element.author? element.author:"Unknown"} date={element.publishedAt} source={element.source.name}/>
+                return element.media?<div className="col-md-4" key={element.link}>
+                <NewsItem title={element.title?element.title.slice(0,40):"Click on 'Read more' for more information"} description={element.summary?element.summary.slice(0,80):"Click on 'Read more' for more information"} img={element.media} newsUrl={element.link}
+                author={element.author? element.author:"Unknown"} date={element.published_date} source={element.rights}/>
             </div>:null
             }
             )}

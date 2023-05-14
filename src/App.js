@@ -33,13 +33,13 @@ const App=()=>{
         onLoaderFinished={() => setProgress(0)}
       />
         <Routes>
-          <Route exact path="/" element={<News apiKey={apiKey} setProgress={setProgress} key="general" pageSize={3} country="in" category="general"/>}></Route>
-          <Route exact path="/business" element={<News apiKey={apiKey} setProgress={setProgress} key="business" pageSize={10} country="in" category="business"/>}></Route>
-          <Route exact path="/entertainment" element={<News apiKey={apiKey} setProgress={setProgress} key="entertainment" pageSize={10} country="in" category="entertainment"/>}></Route>
-          <Route exact path="/health" element={<News apiKey={apiKey} setProgress={setProgress} key="health" pageSize={10} country="in" category="health"/>}></Route>
-          <Route exact path="/science" element={<News apiKey={apiKey} setProgress={setProgress} key="science" pageSize={10} country="in" category="science"/>}></Route>
-          <Route exact path="/sports" element={<News apiKey={apiKey} setProgress={setProgress} key="sports" pageSize={10} country="in" category="sports"/>}></Route>
-          <Route exact path="/technology" element={<News apiKey={apiKey} setProgress={setProgress} key="technology" pageSize={10} country="in" category="technology"/>}></Route>
+          <Route exact path="" element={<News apiKey={apiKey} setProgress={setProgress} key="general" pageSize={3} country="IN" category="general"/>}></Route>
+          <Route exact path="/business" element={<News apiKey={apiKey} setProgress={setProgress} key="business" pageSize={10} country="IN" category="business"/>}></Route>
+          <Route exact path="/entertainment" element={<News apiKey={apiKey} setProgress={setProgress} key="entertainment" pageSize={10} country="IN" category="entertainment"/>}></Route>
+          <Route exact path="/health" element={<News apiKey={apiKey} setProgress={setProgress} key="health" pageSize={10} country="IN" category="health"/>}></Route>
+          <Route exact path="/science" element={<News apiKey={apiKey} setProgress={setProgress} key="science" pageSize={10} country="IN" category="science"/>}></Route>
+          <Route exact path="/sports" element={<News apiKey={apiKey} setProgress={setProgress} key="sports" pageSize={10} country="IN" category="sports"/>}></Route>
+          <Route exact path="/technology" element={<News apiKey={apiKey} setProgress={setProgress} key="technology" pageSize={10} country="IN" category="technology"/>}></Route>
         </Routes>
         </Router>
       </div>
